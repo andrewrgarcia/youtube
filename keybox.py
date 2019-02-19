@@ -27,7 +27,7 @@ from sty import fg, bg, ef, rs
 fg.crimson = ('rgb', (220, 20, 60))
 fg.deepskyblue1 = ('rgb', (0,191,255))
 
-def keygen(N=10):
+def keygen(N=100):
 
     box = N*[''] 
     charno = 10
@@ -36,6 +36,8 @@ def keygen(N=10):
     LETTER = 'QWERTYUIOPASDFGHJKLZXCVBNM'
     nos = '1234567890'
     special = '!@#$%^&r*()_+~'
+
+
     string = letter + LETTER + 5*nos + 3*special
     
     for i in range(N):
@@ -48,7 +50,8 @@ def keygen(N=10):
 #
 #keygen()
 print(keygen())
-            
+
+
             
             
             
