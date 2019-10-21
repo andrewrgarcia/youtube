@@ -1,0 +1,51 @@
+'Counts number of objects in Powerpoint Slide and Calculates its collective Average Height and Width'
+'Slightly adapted from lifeinvba:'
+'https://stackoverflow.com/questions/47741887/count-the-group-of-shapes-in-powerpoint-without-using-type-property'
+
+Sub countshapes()
+Dim strname As String
+Dim thisslide As Long
+Dim strshape() As String
+
+'-----Count the number of slides in presentation'
+
+For thisslide = 1 To ActivePresentation.Slides.Count
+
+With ActivePresentation.Slides(thisslide)
+ReDim strshape(0 To 0)
+
+Wdth = 0
+Hgth = 0
+Count = 0
+For Each oshp In .Shapes
+
+If InStr(1, oshp.Name, "Picture") > 0 Then
+ReDim Preserve strshape(0 To a)
+strshape(a) = oshp.Name
+a = a + 1
+
+Else
+
+ReDim Preserve strshape(0 To d)
+strshape(d) = oshp.Name
+d = d + 1
+
+Wdth = Wdth + (oshp.Width / 72)
+Hgth = Hgth + (oshp.Height / 72)
+Count = Count + 1
+End If
+
+Next oshp
+End With
+Next
+
+S = (Wdth / d + Hgth / d) / 2
+diam = 2 * S / 1.772
+'MsgBox a
+MsgBox "Count: " & Count
+MsgBox "Average Width " & Wdth / d
+MsgBox "Average Height " & Hgth / d
+MsgBox "Average Side, S " & S
+MsgBox "Average Diameter, d = 2*S / sqrt pi: " & diam
+'MsgBox Count
+End Sub
